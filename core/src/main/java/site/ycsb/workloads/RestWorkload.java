@@ -296,11 +296,12 @@ public class RestWorkload extends CoreWorkload {
   }
 
   @Override
-  public void doTransactionUpdate(DB db) {
+  public boolean doTransactionUpdate(DB db) {
     HashMap<String, ByteIterator> value = new HashMap<String, ByteIterator>();
     // Create random bytes of update data with a specific size.
     value.put("data", new RandomByteIterator(fieldlengthgenerator.nextValue().longValue()));
     db.update(null, getNextURL(4), value);
+    return true;
   }
 
 }
