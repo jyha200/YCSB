@@ -43,7 +43,17 @@ LICENSE file.
     <dependency>
       <groupId>org.rocksdb</groupId>
       <artifactId>rocksdbjni</artifactId>
-      <version>${rocksdb.version}</version>
+      <version>7.8.3-linux64</version>
+      <scope>system</scope>
+      <systemPath>/home/jyha/rlw/rocksdb/java/target/rocksdbjni-7.8.3-linux64.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.rocksdb</groupId>
+      <artifactId>librocksdbjni</artifactId>
+      <scope>system</scope>
+      <version>linux64</version>
+      <type>so</type>
+      <systemPath>/home/jyha/rlw/rocksdb/java/target/librocksdbjni-linux64.so</systemPath>
     </dependency>
     <dependency>
       <groupId>site.ycsb</groupId>
