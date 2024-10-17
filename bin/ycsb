@@ -23,6 +23,7 @@ import os
 import shlex
 import sys
 import subprocess
+import time
 
 try:
     mod = __import__('argparse')
@@ -310,6 +311,7 @@ def main():
         cp.extend(find_jars(os.path.join(ycsb_home, "lib")))
         cp.extend(find_jars(os.path.join(db_dir, "lib")))
     else:
+        start_time = time.time()
         warn("Running against a source checkout. In order to get our runtime "
              "dependencies we'll have to invoke Maven. Depending on the state "
              "of your system, this may take ~30-45 seconds")
@@ -323,6 +325,9 @@ def main():
                        project + "*.jar")
         # alredy in jar:jar:jar form
         cp.append(maven_says)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print "Elapsed time: {",elapsed_time,"} seconds"
     cp.insert(0, os.path.join(db_dir, "conf"))
     classpath = os.pathsep.join(cp)
     if args.classpath:
